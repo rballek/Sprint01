@@ -26,4 +26,6 @@ public class ImageDownloader
         }catch(IOException e){
             e.printStackTrace();
         }
-    }}
+    }
+
+}
