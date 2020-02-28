@@ -11,7 +11,12 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static void GUI() {
+    private static void GUITemplate() {
+    /*
+    * Initial Version for The Template's GUI for the Template
+    *
+    * Display Available templates to the user
+    * */
 
         JFrame frame = new JFrame("Campus Security");
         frame.setVisible(true);
@@ -48,6 +53,11 @@ public class Main {
 
     private static void GUIMap() throws IOException {
 
+        /*
+        * Initial Gui for the Map. it Displays Moravian College properties to the user
+        *
+        * */
+
         JFrame frame = new JFrame("Campus Security");
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,22 +92,29 @@ public class Main {
     }
 
     private static void mapOnline() throws URISyntaxException, IOException {
+        /*
+        * General function to display a map online
+        *
+        * TODO
+        *Generalize the function to display  any of Moravian College properties with the GUI
+        *
+        * */
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             Desktop.getDesktop().browse(new URI("https://www.google.com/maps/search/?api=1&query=moravian+college"));
         }
     }
 
     private  static ArrayList<String> read_addresses() throws IOException {
-        // We need to provide file path as the parameter:
-        // double backquote is to avoid compiler interpret words
-        // like \test as \t (ie. as a escape sequence)
-        File file = new File("/Users/giraldoj@moravian.edu/Downloads/Properties - Sheet1.csv");
+
+        /*Function to read the file with current or of interest Moravian College Properties*/
+
+        File file = new File("CollegeProperties");
         ArrayList<String> buildings = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
+        //add each property to the Array
         while ((st = br.readLine()) != null) {
             buildings.add(st);
-
         }
 
         return buildings;
@@ -158,12 +175,12 @@ public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
         Scanner myScanner = new Scanner(System.in);
 
-        String Location = get_user_input(myScanner);
-        saveMap(Location);
+        //String Location = get_user_input(myScanner);
+        //saveMap(Location);
         //GUIMap();
         //GUI();
         //mapOnline();
-        //
+
 
 
     }
