@@ -108,9 +108,9 @@ public class Main {
         BufferedImage image;
         String CITY = "Behlehem";
         String STATE = "PA";
-        String KEY ="AIzaSyB5aUTNspLfNZSMyNQqdzEgrH1G4lJ9ICU";
+        String KEY ="NO_KEY";
         try{
-            String address = "https://maps.googleapis.com/maps/api/staticmap?center="+NorthOrSouth+","+CITY+","+STATE+"&zoom=14&size=400x400&key="+KEY;
+            String address = "https://maps.googleapis.com/maps/api/staticmap?center="+NorthOrSouth+","+CITY+","+STATE+"&zoom=16&size=400x400&key="+KEY;
             URL url =new URL(address);
             //            // read the url
 
@@ -138,13 +138,16 @@ public class Main {
             if(userAnswer.equals("North") || userAnswer.equals("South")){
                 NorthOrSouth = true;
             }
+            else {
+                System.out.println("Wrong input\nValid answer: North, South");
+            }
         }
 
         if(userAnswer.equals("North")){
-            userAnswer = "1200 Main st";
+            userAnswer = "1200_Main_st";
         }
         else{
-            userAnswer = "344 Main Street";
+            userAnswer = "344_Main_Street";
 
         }
         return userAnswer;
@@ -155,9 +158,9 @@ public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
         Scanner myScanner = new Scanner(System.in);
 
-        //String Location = get_user_input(myScanner);
-        //saveMap(Location);
-        GUIMap();
+        String Location = get_user_input(myScanner);
+        saveMap(Location);
+        //GUIMap();
         //GUI();
         //mapOnline();
         //
