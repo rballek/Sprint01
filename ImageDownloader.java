@@ -11,7 +11,7 @@ public class ImageDownloader
         BufferedImage image;
         try{
 
-            URL url =new URL("https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&key=AIzaSyAgnqzaV0d_5sO7BQYWsGkY5RzPd5jwbKU");
+            URL url =new URL("https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&key=");
                     // read the url
 
             image = ImageIO.read(url);
