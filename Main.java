@@ -178,8 +178,7 @@ public class Main {
         //String Location = get_user_input(myScanner);
         //saveMap(Location);
         //GUIMap();
-        //GUI();
-        //mapOnline();
+        //GUITemplate();mapOnline();
 
 
 
