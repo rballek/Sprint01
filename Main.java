@@ -47,15 +47,13 @@ public class Main {
 
         JButton btn = new JButton("OK");
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         panel.add(btn);
+
         frame.setVisible(true);
 
-        /*
-
+                /*
         adding action listener for button "ok"
         to close current window and open GUIMap()
-
          */
 
         btn.addActionListener(new ActionListener(){
@@ -68,7 +66,7 @@ public class Main {
                     ex.printStackTrace();
                 }
             }
-    });
+        });
 
     }
 
@@ -90,7 +88,7 @@ public class Main {
 
         frame.add(panel);
 
-        JLabel lbl = new JLabel("Select one of the addresses and click OK");
+        JLabel lbl = new JLabel("Select one of the templates and click OK");
         lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         panel.add(lbl);
@@ -198,6 +196,7 @@ public class Main {
 
         //String Location = get_user_input(myScanner);
         //saveMap(Location);
+        //GUIMap();
         GUITemplate();
         //mapOnline();
 
