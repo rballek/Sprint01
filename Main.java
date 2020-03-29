@@ -1,6 +1,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URI;
@@ -45,9 +47,28 @@ public class Main {
 
         JButton btn = new JButton("OK");
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(btn);
 
+        panel.add(btn);
         frame.setVisible(true);
+
+        /*
+
+        adding action listener for button "ok"
+        to close current window and open GUIMap()
+
+         */
+
+        btn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    frame.dispose();
+                    GUIMap();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+    });
 
     }
 
@@ -69,7 +90,7 @@ public class Main {
 
         frame.add(panel);
 
-        JLabel lbl = new JLabel("Select one of the templates and click OK");
+        JLabel lbl = new JLabel("Select one of the addresses and click OK");
         lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         panel.add(lbl);
@@ -177,8 +198,8 @@ public class Main {
 
         //String Location = get_user_input(myScanner);
         //saveMap(Location);
-        //GUIMap();
-        //GUITemplate();mapOnline();
+        GUITemplate();
+        //mapOnline();
 
 
 
