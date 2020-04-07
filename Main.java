@@ -9,16 +9,17 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.lang.String;
 import java.util.Scanner;
 
 public class Main {
 
-    private static void GUITemplate() {
-    /*
-    * Initial Version for The Template's GUI for the Template
-    *
-    * Display Available templates to the user
-    * */
+    private static void GUITemplate() throws IOException {
+        /*
+         * Initial Version for The Template's GUI for the Template
+         *
+         * Display Available templates to the user
+         * */
 
         JFrame frame = new JFrame("Campus Security");
         frame.setVisible(true);
@@ -28,22 +29,31 @@ public class Main {
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
         frame.add(panel);
+
 
         JLabel lbl = new JLabel("Select one of the templates and click OK");
         lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         panel.add(lbl);
 
-        String[] templates = {"Template 1", "Template 2", "Template 3", "Template 4",
+
+        String[] templates = {"select", "Weather-Alert", "Burglary", "Suspicious activity", "Template 4",
                 "Template 5", "Template 6"};
-
         final JComboBox<String> cb = new JComboBox<String>(templates);
-
         cb.setMaximumSize(cb.getPreferredSize());
         cb.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(cb);
+
+
+        JLabel lbl2 = new JLabel("Do you want to generate a map?");
+        lbl2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(lbl2);
+
+        String[] Answers = {"select", "Yes", "No"};
+        final JComboBox<String> cb1 = new JComboBox<String>(Answers);
+        cb1.setMaximumSize(cb.getPreferredSize());
+        cb1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(cb1);
 
         JButton btn = new JButton("OK");
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -60,22 +70,36 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    frame.dispose();
-                    GUIMap();
+
+                    String typeOfEvent = (String)cb.getSelectedItem();
+                    String createMap = (String)cb1.getSelectedItem();
+                    if(!typeOfEvent.equals("select")) {
+                        if (createMap.equals("Yes")) {
+
+                            frame.dispose();
+                            //call a function to generate the template
+                            GUIMap();
+
+                        } else if (createMap.equals("No")) {
+                            frame.dispose();
+                        }
+                    }
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
         });
 
+
     }
 
     private static void GUIMap() throws IOException {
 
         /*
-        * Initial Gui for the Map. it Displays Moravian College properties to the user
-        *
-        * */
+         * Initial Gui for the Map. it Displays Moravian College properties to the user
+         *
+         * */
 
         JFrame frame = new JFrame("Campus Security");
         frame.setVisible(true);
@@ -102,24 +126,49 @@ public class Main {
         cb.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(cb);
 
+        JLabel lbl2 = new JLabel("select the radius( in miles)");
+        lbl2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(lbl2);
+
+
+        String[] templates = {"select", "1", "2", "5", "10"};
+        final JComboBox<String> cb1 = new JComboBox<String>(templates);
+        cb1.setMaximumSize(cb1.getPreferredSize());
+        cb1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(cb1);
+
         JButton btn = new JButton("OK");
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(btn);
 
         frame.setVisible(true);
 
+        btn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String mapAddress = (String)cb.getSelectedItem();
+                String radius = (String)cb1.getSelectedItem();
+                if(!mapAddress.equals("select") && !radius.equals("select")) {
+                    saveMap(mapAddress, radius);
+                }
+
+            }
+        });
+
+
     }
 
-    private static void mapOnline() throws URISyntaxException, IOException {
+    private static void mapOnline(String address) throws URISyntaxException, IOException {
         /*
-        * General function to display a map online
-        *
-        * TODO
-        *Generalize the function to display  any of Moravian College properties with the GUI
-        *
-        * */
+         * General function to display a map online
+         *
+         * TODO
+         *Generalize the function to display  any of Moravian College properties with the GUI
+         *
+         * */
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-            Desktop.getDesktop().browse(new URI("https://www.google.com/maps/search/?api=1&query=moravian+college"));
+            Desktop.getDesktop().browse(new URI("https://www.google.com/maps/search/?api=1&query="+address));
         }
     }
 
@@ -140,13 +189,17 @@ public class Main {
 
     }
 
-    public static void saveMap(String NorthOrSouth){
+    private static void saveMap(String mapAddress, String radius){
         BufferedImage image;
         String CITY = "Behlehem";
         String STATE = "PA";
-        String KEY ="NO_KEY";
+        String KEY ="noKey";
+        String newStr = mapAddress.replaceAll(" ", "+");
+        System.out.println(newStr);
+
+
         try{
-            String address = "https://maps.googleapis.com/maps/api/staticmap?center="+NorthOrSouth+","+CITY+","+STATE+"&zoom=16&size=400x400&key="+KEY;
+            String address = "https://maps.googleapis.com/maps/api/staticmap?center="+newStr+","+CITY+","+STATE+"&zoom=16&size=400x400&key="+KEY;
             URL url =new URL(address);
             //            // read the url
 
@@ -164,41 +217,10 @@ public class Main {
         }
     }
 
-    private static String get_user_input(Scanner myScanner){
-        boolean NorthOrSouth = false;
-        String userAnswer = "";
-
-        System.out.println("Would you like to display North or South Campus?\nAnswer:   ");
-        while(!NorthOrSouth) {
-            userAnswer = myScanner.nextLine();  // Read user input
-            if(userAnswer.equals("North") || userAnswer.equals("South")){
-                NorthOrSouth = true;
-            }
-            else {
-                System.out.println("Wrong input\nValid answer: North, South");
-            }
-        }
-
-        if(userAnswer.equals("North")){
-            userAnswer = "1200_Main_st";
-        }
-        else{
-            userAnswer = "344_Main_Street";
-
-        }
-        return userAnswer;
-
-    }
-
-
     public static void main(String[] args) throws IOException, URISyntaxException {
-        Scanner myScanner = new Scanner(System.in);
 
-        //String Location = get_user_input(myScanner);
-        //saveMap(Location);
-        //GUIMap();
         GUITemplate();
-        //mapOnline();
+
 
 
 
