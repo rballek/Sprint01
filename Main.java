@@ -151,6 +151,7 @@ public class Main {
                 String radius = (String)cb1.getSelectedItem();
                 if(!mapAddress.equals("select") && !radius.equals("select")) {
                     saveMap(mapAddress, radius);
+                    frame.dispose();
                 }
 
             }
@@ -207,10 +208,10 @@ public class Main {
             System.out.println(image);
 
             // for png
-            ImageIO.write(image, "png",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01/map.png"));
+            ImageIO.write(image, "png",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint02/map.png"));
 
             // for jpg
-            ImageIO.write(image, "jpg",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01/map.jpg"));
+            ImageIO.write(image, "jpg",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint02/map.jpg"));
 
         }catch(IOException e){
             e.printStackTrace();
