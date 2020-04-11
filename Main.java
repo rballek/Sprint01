@@ -150,7 +150,7 @@ public class Main {
                 String mapAddress = (String)cb.getSelectedItem();
                 String radius = (String)cb1.getSelectedItem();
                 if(!mapAddress.equals("select") && !radius.equals("select")) {
-                    saveMap(mapAddress, radius);
+                    //saveMap(mapAddress, radius);
                     frame.dispose();
                 }
 
@@ -177,7 +177,7 @@ public class Main {
 
         /*Function to read the file with current or of interest Moravian College Properties*/
 
-        File file = new File("CollegeProperties");
+        File file = new File("D:\\Java\\IdeaProjects\\Sprint01WorkingOn\\src\\CollegeProperties");
         ArrayList<String> buildings = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
@@ -220,10 +220,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
 
-        GUITemplate();
+        //GUITemplate();
+
+        WindowFirst campusSecurity = new WindowFirst();
+
+        }
 
 
 
 
     }
-}
+
