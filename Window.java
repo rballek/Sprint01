@@ -1,4 +1,4 @@
-import javax.swing.*;
+import java.io.IOException;
 
 public abstract class Window {
     DisplayBehavior displayBehavior;
@@ -7,12 +7,16 @@ public abstract class Window {
 
     }
 
-    public void setDisplayBehavior(DisplayBehavior db){
+    public void setDisplayBehavior(DisplayBehavior db) throws IOException {
         displayBehavior = db;
         performDisplay();
     }
 
-    public void performDisplay(){
+    public DisplayBehavior getDisplayBehavior(){
+        return this.displayBehavior;
+    }
+
+    public void performDisplay() throws IOException {
         displayBehavior.display();
     }
 

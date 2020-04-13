@@ -5,16 +5,20 @@ import java.awt.event.ActionListener;
 
 public class DisplayBurglary implements DisplayBehavior {
 
+    /*
+    Creates/display the behavior of window(how it looks/fields of user input)
+    Contains all the user input which we will use to create the email to be sent out
+     */
     public void display(){
-        JFrame frame1 = new JFrame("Campus Security");
-        frame1.setVisible(true);
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame1.setSize(500, 500);
-        frame1.setLocation(430, 100);
+        JFrame frame = new JFrame("Campus Security");
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+        frame.setLocation(430, 100);
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        frame1.add(panel);
+        frame.add(panel);
 
         JLabel lbl = new JLabel("Threat Level");
         lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -43,18 +47,19 @@ public class DisplayBurglary implements DisplayBehavior {
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(btn);
 
-        frame1.setVisible(true);
+        frame.setVisible(true);
 
-                /*
+        /*
+        TODO
         adding action listener for button "ok"
-        to close current window and open GUIMap()
+        to generate an email based off of all the input they entered
+        structure will vary depending on the type of incident and other thing
          */
 
         btn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 //frame1.dispose();
-                //call a function to generate the template
             }
         });
     }

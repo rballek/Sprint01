@@ -6,7 +6,11 @@ import java.io.IOException;
 
 public class DisplayFirst implements DisplayBehavior {
 
-    public void display(){
+    /*
+    Creates/display the behavior of window(how it looks/fields of user input)
+    Contains all the user input which we will use to create the email to be sent out
+     */
+    public void display() {
         JFrame frame = new JFrame("Campus Security");
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,21 +49,36 @@ public class DisplayFirst implements DisplayBehavior {
 
         frame.setVisible(true);
 
-                /*
+         /*
         adding action listener for button "ok"
-        to close current window and open GUIMap()
+        to create a new WindowAddress if the user choose for
+        a map to be generate or not, if not then it creates a new WindowTemplate
+        and which behavior is set depends on the incident.
          */
 
         btn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                         frame.dispose();
-                        //call a function to generate the template
+                        String mapSelection = (String)cb1.getSelectedItem();
                         String incidentSelected = (String)cb.getSelectedItem();
-                        WindowTemplates incidentOption = new WindowTemplates(incidentSelected);
-
-
+                        if(mapSelection == "Yes"){
+                            try {
+                                Window map = new WindowAddress(incidentSelected);
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
                         }
+                        else{
+                            try {
+                                Window incident = new WindowTemplates(incidentSelected);
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        }
+
+
+            }
                 });
 
 
