@@ -62,6 +62,7 @@ public class DisplayFirst implements DisplayBehavior {
                         frame.dispose();
                         String mapSelection = (String)cb1.getSelectedItem();
                         String incidentSelected = (String)cb.getSelectedItem();
+                        String address;
                         if(mapSelection == "Yes"){
                             try {
                                 Window map = new WindowAddress(incidentSelected);

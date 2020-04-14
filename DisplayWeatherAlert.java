@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class DisplayWeatherAlert implements DisplayBehavior {
 
@@ -44,6 +47,14 @@ public class DisplayWeatherAlert implements DisplayBehavior {
         cb2.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(cb2);
 
+        JLabel lbl4 = new JLabel("Comments");
+        lbl4.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(lbl4);
+
+        JTextField field1 = new JTextField();
+        field1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(field1);
+
         JButton btn = new JButton("OK");
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(btn);
@@ -60,7 +71,38 @@ public class DisplayWeatherAlert implements DisplayBehavior {
         btn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                //frame1.dispose();
+                frame.dispose();
+                String weatherConditions = (String)cb.getSelectedItem();
+                String weatherSeverity = (String)cb2.getSelectedItem();
+                String comments =  field1.getText();
+                System.out.println();
+                try {
+                    File mytemplate = new File("myTemplateWeatherAlert" + ".txt");
+
+                    if (mytemplate.createNewFile()) {
+                        System.out.println("File created: " + mytemplate.getName());
+                    } else {
+                        System.out.println("File already exists.");
+                    }
+
+                } catch (IOException E) {
+                    System.out.println("An error occurred.");
+                    E.printStackTrace();
+                }
+
+                try {
+                    FileWriter myWriter = new FileWriter("myTemplateWeatherAlert" + ".txt");
+                    myWriter.write("All,\n");
+                    myWriter.write("    Occurrence Date and Time:           \n");
+                    myWriter.write("    weather conditions:   " + weatherConditions + "\n");
+                    myWriter.write("    weather severity:              " + weatherSeverity + "\n");
+                    myWriter.write("    Comments: "+ comments + "\n");
+                    myWriter.close();
+                    System.out.println("Successfully wrote to the file.");
+                } catch (IOException t) {
+                    System.out.println("An error occurred.");
+                    t.printStackTrace();
+                }
             }
         });
     }
