@@ -115,7 +115,7 @@ public class DisplayAddress implements DisplayBehavior {
 
         /*Function to read the file with current or of interest Moravian College Properties*/
 
-        File file = new File("D:\\Java\\IdeaProjects\\Sprint01WorkingOn\\src\\CollegeProperties");
+        File file = new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/CollegeProperties");
         ArrayList<String> buildings = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
@@ -131,7 +131,7 @@ public class DisplayAddress implements DisplayBehavior {
         BufferedImage image;
         String CITY = "Behlehem";
         String STATE = "PA";
-        String KEY ="AIzaSyC853EwR1EYQA2xfGi7pbhVE2r5kC7t6hc";
+        String KEY ="AIzaSyB-rmfGuWb9kl3C3wobelo-V-fRaEsVETQ";
         String newStr = mapAddress.replaceAll(" ", "+");
         System.out.println(newStr);
 
