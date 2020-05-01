@@ -39,11 +39,16 @@ def main():
 
 
     # Call the Gmail API
-    for teamMember in ['alharbia02@moravian.edu', 'ballekr@moravian.edu']:
-        message = send_email.CreateMessage("giraldoj@moravian.edu", teamMember, "The gmail api",
-                                           "after 2 failed tries and much coffee I got it")
-        send_email.SendMessage(service, "me", message)
+    file = open("/Users/giraldoj@moravian.edu/PycharmProjects/Sprint01/myTemplateWeatherAlert.txt", "r")
+    email = file.read()
+    file.close()
 
+    for teamMember in ['giraldoj@moravian.edu', 'schaperg@moravian.edu']:
+        message = send_email.CreateMessageWithAttachment("giraldoj@moravian.edu", teamMember, "The gmail api",
+                                                     email,
+                                                     "/Users/giraldoj@moravian.edu/PycharmProjects/Sprint01",
+                                                     "map.jpg")
+        send_email.SendMessage(service, "me", message)
 
 if __name__ == '__main__':
     main()

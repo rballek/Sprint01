@@ -1,5 +1,5 @@
 All,
     Occurrence Date and Time:           
-    weather conditions:   High Winds
-    weather severity:              high
-    Comments: khlkjho
+    weather conditions:   Flooding
+    weather severity:              moderate
+    Comments: Please refrain of doing silly things

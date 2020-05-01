@@ -1,6 +1,6 @@
 All,
     Occurrence Date and Time:           
-    Threat level:   select
-    weapon:         select
-    Recommended course of action:   select
-    Comments: 
+    Threat level:   moderate
+    weapon:         knife
+    Recommended course of action:   get away from the area
+    Comments: Please, be advised some suspic......

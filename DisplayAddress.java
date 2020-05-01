@@ -145,10 +145,10 @@ public class DisplayAddress implements DisplayBehavior {
             System.out.println(image);
 
             // for png
-            ImageIO.write(image, "png",new File("D:\\Java\\IdeaProjects\\Sprint01WorkingOn\\map.png"));
+            ImageIO.write(image, "png",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.png"));
 
             // for jpg
-            ImageIO.write(image, "jpg",new File("D:\\Java\\IdeaProjects\\Sprint01WorkingOn\\map.jpg"));
+            ImageIO.write(image, "jpg",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.jpg"));
 
         }catch(IOException e){
             e.printStackTrace();
