@@ -1,5 +1,5 @@
 All,
     Occurrence Date and Time:           
     weather conditions:   High Winds
-    weather severity:              low
-    Comments: kj;kjn;kn;
+    weather severity:              high
+    Comments: khlkjho

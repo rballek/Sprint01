@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class DisplayWeatherAlert implements DisplayBehavior {
+    SaveBehavior sb = new SaveWeatherAlert();
 
     /*
     Creates/display the behavior of window(how it looks/fields of user input)
@@ -47,11 +48,12 @@ public class DisplayWeatherAlert implements DisplayBehavior {
         cb2.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(cb2);
 
-        JLabel lbl4 = new JLabel("Comments");
+        JLabel lbl4 = new JLabel("Safety Tip");
         lbl4.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(lbl4);
 
-        JTextField field1 = new JTextField();
+        JTextField field1 = new JTextField(20);
+        field1.setMaximumSize(field1.getPreferredSize());
         field1.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(field1);
 
@@ -68,42 +70,17 @@ public class DisplayWeatherAlert implements DisplayBehavior {
         structure will vary depending on the type of incident and other thing
          */
 
-        btn.addActionListener(new ActionListener(){
+        btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                String weatherConditions = (String)cb.getSelectedItem();
-                String weatherSeverity = (String)cb2.getSelectedItem();
-                String comments =  field1.getText();
+                String weatherConditions = (String) cb.getSelectedItem();
+                String weatherSeverity = (String) cb2.getSelectedItem();
+                String comments = field1.getText();
                 System.out.println();
-                try {
-                    File mytemplate = new File("myTemplateWeatherAlert" + ".txt");
-
-                    if (mytemplate.createNewFile()) {
-                        System.out.println("File created: " + mytemplate.getName());
-                    } else {
-                        System.out.println("File already exists.");
-                    }
-
-                } catch (IOException E) {
-                    System.out.println("An error occurred.");
-                    E.printStackTrace();
-                }
-
-                try {
-                    FileWriter myWriter = new FileWriter("myTemplateWeatherAlert" + ".txt");
-                    myWriter.write("All,\n");
-                    myWriter.write("    Occurrence Date and Time:           \n");
-                    myWriter.write("    weather conditions:   " + weatherConditions + "\n");
-                    myWriter.write("    weather severity:              " + weatherSeverity + "\n");
-                    myWriter.write("    Comments: "+ comments + "\n");
-                    myWriter.close();
-                    System.out.println("Successfully wrote to the file.");
-                } catch (IOException t) {
-                    System.out.println("An error occurred.");
-                    t.printStackTrace();
-                }
+                sb.save(weatherConditions, weatherSeverity, comments);
             }
         });
+
     }
 }
