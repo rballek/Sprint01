@@ -120,7 +120,7 @@ public class DisplayAddress implements DisplayBehavior {
         BufferedImage image;
         String CITY = "Behlehem";
         String STATE = "PA";
-        String KEY ="AIzaSyB-rmfGuWb9kl3C3wobelo-V-fRaEsVETQ";
+        String KEY ="noKey";
         String newStr = mapAddress.replaceAll(" ", "+");
         System.out.println(newStr);
 
