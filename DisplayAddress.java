@@ -1,5 +1,7 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,11 +58,20 @@ public class DisplayAddress implements DisplayBehavior {
         panel.add(lbl2);
 
 
-        String[] templates = {"select", "1", "2", "5", "10"};
-        final JComboBox<String> cb1 = new JComboBox<String>(templates);
-        cb1.setMaximumSize(cb1.getPreferredSize());
-        cb1.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(cb1);
+        JSlider sld = new JSlider(1, 10, 5);
+        sld.setMaximumSize(sld.getPreferredSize());
+        sld.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(sld);
+        sld.setPaintTicks(true);
+        sld.setMajorTickSpacing(5);
+        JLabel lbl3 = new JLabel("5");
+        panel.add(lbl3);
+        sld.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent changeEvent) {
+                lbl3.setText(String.valueOf(sld.getValue()));
+            }
+        });
 
         JButton btn = new JButton("OK");
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -81,7 +92,7 @@ public class DisplayAddress implements DisplayBehavior {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String mapAddress = (String)cb.getSelectedItem();
-                String radius = (String)cb.getSelectedItem();
+                String radius = (String)lbl3.getText();
 
                 if(!mapAddress.equals("select") && !radius.equals("select")) {
                     saveMap(mapAddress, radius);
@@ -104,7 +115,7 @@ public class DisplayAddress implements DisplayBehavior {
 
         /*Function to read the file with current or of interest Moravian College Properties*/
 
-        File file = new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint02/CollegeProperties");
+        File file = new File("D:\\Java\\IdeaProjects\\Sprint01WorkingOn\\src\\CollegeProperties");
         ArrayList<String> buildings = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
@@ -120,7 +131,7 @@ public class DisplayAddress implements DisplayBehavior {
         BufferedImage image;
         String CITY = "Behlehem";
         String STATE = "PA";
-        String KEY ="noKey";
+        String KEY ="AIzaSyC853EwR1EYQA2xfGi7pbhVE2r5kC7t6hc";
         String newStr = mapAddress.replaceAll(" ", "+");
         System.out.println(newStr);
 
@@ -134,10 +145,10 @@ public class DisplayAddress implements DisplayBehavior {
             System.out.println(image);
 
             // for png
-            ImageIO.write(image, "png",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.png"));
+            ImageIO.write(image, "png",new File("D:\\Java\\IdeaProjects\\Sprint01WorkingOn\\map.png"));
 
             // for jpg
-            ImageIO.write(image, "jpg",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.jpg"));
+            ImageIO.write(image, "jpg",new File("D:\\Java\\IdeaProjects\\Sprint01WorkingOn\\map.jpg"));
 
         }catch(IOException e){
             e.printStackTrace();
