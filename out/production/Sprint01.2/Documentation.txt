@@ -1,0 +1,7 @@
+here is the documentation to build the URL. 
+https://developers.google.com/maps/documentation/maps-static/dev-guide
+https://developers.google.com/maps/documentation/urls/guide#street-view-action
+
+understanding the code:
+https://stackoverflow.com/questions/23688702/cannot-start-compilation-the-output-path-is-not-specified-for-module
+https://stackoverflow.com/questions/5226212/how-to-open-the-default-webbrowser-using-java
