@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 public class DisplayBurglary implements DisplayBehavior {
+    SaveBehavior sb = new SaveBurglary();
 
     /*
     Creates/display the behavior of window(how it looks/fields of user input)
@@ -57,11 +58,12 @@ public class DisplayBurglary implements DisplayBehavior {
         panel.add(cb3);
 
 
-        JLabel lbl4 = new JLabel("Comments");
+        JLabel lbl4 = new JLabel("Safety Tip");
         lbl4.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(lbl4);
 
-        JTextField field1 = new JTextField();
+        JTextField field1 = new JTextField(20);
+        field1.setMaximumSize(field1.getPreferredSize());
         field1.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(field1);
 
@@ -86,37 +88,11 @@ public class DisplayBurglary implements DisplayBehavior {
                 frame.dispose();
                 String threatLevel = (String)cb.getSelectedItem();
                 String weapon = (String)cb2.getSelectedItem();
-                String ActionRequiered = (String)cb3.getSelectedItem();
+                String ActionRequired = (String)cb3.getSelectedItem();
                 String comments =  (String)field1.getText();
                 System.out.println();
-                try {
-                    File mytemplate = new File("myTemplateBurglary" + ".txt");
+                sb.save(threatLevel, weapon, ActionRequired,comments);
 
-                    if (mytemplate.createNewFile()) {
-                        System.out.println("File created: " + mytemplate.getName());
-                    } else {
-                        System.out.println("File already exists.");
-                    }
-
-                } catch (IOException E) {
-                    System.out.println("An error occurred.");
-                    E.printStackTrace();
-                }
-
-                try {
-                    FileWriter myWriter = new FileWriter("myTemplateBurglary" + ".txt");
-                    myWriter.write("All,\n");
-                    myWriter.write("    Occurrence Date and Time:           \n");
-                    myWriter.write("    Threat level:   " + threatLevel + "\n");
-                    myWriter.write("    weapon:         " + weapon + "\n");
-                    myWriter.write("    Recommended course of action:   " + ActionRequiered + "\n");
-                    myWriter.write("    Comments: "+ comments);
-                    myWriter.close();
-                    System.out.println("Successfully wrote to the file.");
-                } catch (IOException t) {
-                    System.out.println("An error occurred.");
-                    t.printStackTrace();
-                }
                 //function to display a message based on the officers' input
                 //{type of alert}: blbala
                 //{another field}: balabl

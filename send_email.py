@@ -27,7 +27,7 @@ def SendMessage(service, user_id, message):
   Returns:
     Sent Message.
   """
-
+    print("hola")
     try:
         message = (service.users().messages().send(userId=user_id, body=message)
                    .execute())
@@ -109,8 +109,4 @@ def CreateMessageWithAttachment(sender, to, subject, message_text, file_dir,
     msg.add_header('Content-Disposition', 'attachment', filename=filename)
     message.attach(msg)
 
-
-    raw = base64.urlsafe_b64encode(message.as_bytes())
-    raw = raw.decode()
-    body = {'raw': raw}
-    return body
+    return {'raw': base64.urlsafe_b64encode(message.as_string())}

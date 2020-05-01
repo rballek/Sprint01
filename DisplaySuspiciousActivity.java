@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class DisplaySuspiciousActivity implements DisplayBehavior{
+    SaveBehavior sb = new SaveSuspiciousActivity();
 
     /*
     Creates/display the behavior of window(how it looks/fields of user input)
@@ -48,11 +49,11 @@ public class DisplaySuspiciousActivity implements DisplayBehavior{
         cb1.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(cb1);
 
-        JLabel lbl2 = new JLabel("Action require");
+        JLabel lbl2 = new JLabel("Action required");
         lbl2.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(lbl2);
 
-        String[] actionRequired = {"select", "get away from the area", "no action requiered"};
+        String[] actionRequired = {"select", "get away from the area", "no action required"};
         final JComboBox<String> cb2 = new JComboBox<String>(actionRequired);
         cb2.setMaximumSize(cb2.getPreferredSize());
         cb2.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -64,17 +65,19 @@ public class DisplaySuspiciousActivity implements DisplayBehavior{
         panel.add(lbl3);
 
 
-        String[] weatherSeverity = {"select", "loitering", "destruction", "disruptive", "arson"};
-        final JComboBox<String> cb3 = new JComboBox<String>(weatherSeverity);
+        String[] possibleActivity = {"select", "loitering", "destruction", "disruptive", "arson"};
+        final JComboBox<String> cb3 = new JComboBox<String>(possibleActivity);
         cb3.setMaximumSize(cb3.getPreferredSize());
         cb3.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(cb3);
 
-        JLabel lbl4 = new JLabel("Comments");
+        JLabel lbl4 = new JLabel("Safety Tip");
         lbl4.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(lbl4);
 
-        JTextField field1 = new JTextField();
+
+        JTextField field1 = new JTextField(20);
+        field1.setMaximumSize(field1.getPreferredSize());
         field1.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(field1);
 
@@ -101,35 +104,8 @@ public class DisplaySuspiciousActivity implements DisplayBehavior{
                 String possibleCrime = (String)cb3.getSelectedItem();
                 String comments =  field1.getText();
                 System.out.println();
-                try {
-                    File mytemplate = new File("myTemplateSuspiciousActivity" + ".txt");
+                sb.save(threatLevel, amountOfPeople, ActionRequiered, possibleCrime, comments);
 
-                    if (mytemplate.createNewFile()) {
-                        System.out.println("File created: " + mytemplate.getName());
-                    } else {
-                        System.out.println("File already exists.");
-                    }
-
-                } catch (IOException E) {
-                    System.out.println("An error occurred.");
-                    E.printStackTrace();
-                }
-
-                try {
-                    FileWriter myWriter = new FileWriter("myTemplateSuspiciousActivity" + ".txt");
-                    myWriter.write("All,\n");
-                    myWriter.write("    Occurrence Date and Time:           \n");
-                    myWriter.write("    Threat level:   " + threatLevel + "\n");
-                    myWriter.write("    Amount of suspects:              " + amountOfPeople+ "\n");
-                    myWriter.write("    Possible Crime: "+ possibleCrime + "\n");
-                    myWriter.write("    Recommended course of action:   " + ActionRequiered + "\n");
-                    myWriter.write("    Comments: "+ comments + "\n");
-                    myWriter.close();
-                    System.out.println("Successfully wrote to the file.");
-                } catch (IOException t) {
-                    System.out.println("An error occurred.");
-                    t.printStackTrace();
-                }
                 //function to display a message based on the officers' input
                 //{type of alert}: blbala
                 //{another field}: balabl

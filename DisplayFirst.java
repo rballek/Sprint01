@@ -26,8 +26,7 @@ public class DisplayFirst implements DisplayBehavior {
         panel.add(lbl);
 
 
-        String[] templates = {"select", "Weather Alert", "Burglary", "Suspicious Activity", "Template 4",
-                "Template 5", "Template 6"};
+        String[] templates = {"select", "Weather Alert", "Burglary", "Suspicious Activity"};
         final JComboBox<String> cb = new JComboBox<String>(templates);
         cb.setMaximumSize(cb.getPreferredSize());
         cb.setAlignmentX(Component.CENTER_ALIGNMENT);
