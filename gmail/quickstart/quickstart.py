@@ -6,10 +6,9 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import send_email
 
-
-
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.send']
+
 
 def main():
     """Shows basic usage of the Gmail API.
@@ -36,11 +35,16 @@ def main():
 
     service = build('gmail', 'v1', credentials=creds)
 
-
     # Call the Gmail API
-    for teamMember in ['alharbia02@moravian.edu', 'ballekr@moravian.edu']:
-        message = send_email.CreateMessage("giraldoj@moravian.edu", teamMember, "The gmail api",
-                                           "after 2 failed tries and much coffee I got it")
+    file = open("/Users/giraldoj@moravian.edu/PycharmProjects/Sprint01/myTemplateWeatherAlert.txt", "r")
+    email = file.read()
+    file.close()
+
+    for teamMember in ['giraldoj@moravian.edu']:
+        message = send_email.CreateMessageWithAttachment("giraldoj@moravian.edu", teamMember, "The gmail api",
+                                                         email,
+                                                         "/Users/giraldoj@moravian.edu/PycharmProjects/Sprint01",
+                                                         "map.jpg")
         send_email.SendMessage(service, "me", message)
 
 
