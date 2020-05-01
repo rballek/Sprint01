@@ -27,7 +27,7 @@ def SendMessage(service, user_id, message):
   Returns:
     Sent Message.
   """
-    print("hola")
+    print(service)
     try:
         message = (service.users().messages().send(userId=user_id, body=message)
                    .execute())
