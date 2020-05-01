@@ -84,7 +84,7 @@ public class DisplayAddress implements DisplayBehavior {
                 String radius = (String)cb.getSelectedItem();
 
                 if(!mapAddress.equals("select") && !radius.equals("select")) {
-                    //saveMap(mapAddress, radius);
+                    saveMap(mapAddress, radius);
                 }
                 try {
                     frame.dispose();
@@ -120,7 +120,7 @@ public class DisplayAddress implements DisplayBehavior {
         BufferedImage image;
         String CITY = "Behlehem";
         String STATE = "PA";
-        String KEY ="NoKey";
+        String KEY ="AIzaSyB-rmfGuWb9kl3C3wobelo-V-fRaEsVETQ";
         String newStr = mapAddress.replaceAll(" ", "+");
         System.out.println(newStr);
 
@@ -134,10 +134,10 @@ public class DisplayAddress implements DisplayBehavior {
             System.out.println(image);
 
             // for png
-            ImageIO.write(image, "png",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint02/map.png"));
+            ImageIO.write(image, "png",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.png"));
 
             // for jpg
-            ImageIO.write(image, "jpg",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint02/map.jpg"));
+            ImageIO.write(image, "jpg",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.jpg"));
 
         }catch(IOException e){
             e.printStackTrace();
