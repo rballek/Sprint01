@@ -1,5 +1,5 @@
 All,
     Occurrence Date and Time:           
-    weather conditions:   Flooding
+    weather conditions:   High Winds
     weather severity:              moderate
-    Comments: Please refrain of doing silly things
+    Comments: be safe
