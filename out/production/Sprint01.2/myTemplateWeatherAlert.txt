@@ -1,5 +1,5 @@
 All,
-    Occurrence Date and Time:  2020/05/04 21:30:42
-    weather conditions:   Snow
-    weather severity:              extreme
-    Comments: 6 feet of snow
+    Occurrence Date and Time: 2020/05/04 21:32:47
+    weather conditions: Flooding
+    weather severity: select
+    Comments: 12 feet of flooding
