@@ -1,6 +1,6 @@
 All,
     Occurrence Date and Time:           
     Threat level:   moderate
-    weapon:         knife
+    weapon:         firearm
     Recommended course of action:   get away from the area
-    Comments: Please, be advised some suspic......
+    Comments: wfwe

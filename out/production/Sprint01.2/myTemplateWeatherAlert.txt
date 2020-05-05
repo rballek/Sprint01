@@ -1,5 +1,5 @@
 All,
-    Occurrence Date and Time:           
-    weather conditions:   High Winds
-    weather severity:              moderate
-    Comments: be safe
+    Occurrence Date and Time:  2020/05/04 21:30:42
+    weather conditions:   Snow
+    weather severity:              extreme
+    Comments: 6 feet of snow

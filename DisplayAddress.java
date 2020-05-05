@@ -115,7 +115,7 @@ public class DisplayAddress implements DisplayBehavior {
 
         /*Function to read the file with current or of interest Moravian College Properties*/
 
-        File file = new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/CollegeProperties");
+        File file = new File("/Users/rsballek/Sprint01/CollegeProperties");
         ArrayList<String> buildings = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
@@ -145,10 +145,10 @@ public class DisplayAddress implements DisplayBehavior {
             System.out.println(image);
 
             // for png
-            ImageIO.write(image, "png",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.png"));
+            ImageIO.write(image, "png",new File("/Users/rsballek/Sprint01/map.png"));
 
             // for jpg
-            ImageIO.write(image, "jpg",new File("/Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/map.jpg"));
+            ImageIO.write(image, "jpg",new File("/Users/rsballek/Sprint01/map.jpg"));
 
         }catch(IOException e){
             e.printStackTrace();

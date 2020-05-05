@@ -12,6 +12,9 @@ public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException, IOException {
 
             WindowFirst campusSecurity = new WindowFirst();
+
+            /*
+
             String command = "/usr/local/bin/python3.7 //Users/giraldoj@moravian.edu/IdeaProjects/Sprint01.2/gmail/quickstart/quickstart.py";
             Process p = Runtime.getRuntime().exec(command);
             p.waitFor();
@@ -30,6 +33,9 @@ public class Main {
             System.out.println("Done.");
 
             p.destroy();
+
+
+             */
 
         }
     }

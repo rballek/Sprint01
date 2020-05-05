@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class SaveSuspiciousActivity implements SaveBehavior{
     @Override
@@ -29,14 +31,16 @@ public class SaveSuspiciousActivity implements SaveBehavior{
         }
 
         try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
             FileWriter myWriter = new FileWriter("myTemplateSuspiciousActivity" + ".txt");
             myWriter.write("All,\n");
-            myWriter.write("    Occurrence Date and Time:           \n");
-            myWriter.write("    Threat level:   " + threatLevel + "\n");
-            myWriter.write("    Amount of suspects:              " + amountOfPeople+ "\n");
+            myWriter.write("    Occurrence Date and Time: " + dtf.format(now) + "\n");
+            myWriter.write("    Threat level: " + threatLevel + "\n");
+            myWriter.write("    Amount of suspects: " + amountOfPeople+ "\n");
             myWriter.write("    Possible Crime: "+ ActionRequiered + "\n");
-            myWriter.write("    Recommended course of action:   " + possibleCrime + "\n");
-            myWriter.write("    Comments: "+ comments + "\n");
+            myWriter.write("    Recommended course of action: " + possibleCrime + "\n");
+            myWriter.write("    Comments: " + comments + "\n");
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException t) {
