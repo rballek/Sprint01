@@ -106,6 +106,9 @@ public class DisplaySuspiciousActivity implements DisplayBehavior{
                 System.out.println();
                 sb.save(threatLevel, amountOfPeople, ActionRequiered, possibleCrime, comments);
 
+                Gmail sendMessage = new Gmail();
+                sendMessage.runGmailAPI();
+
                 //function to display a message based on the officers' input
                 //{type of alert}: blbala
                 //{another field}: balabl

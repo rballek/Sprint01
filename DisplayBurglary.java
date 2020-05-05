@@ -93,6 +93,10 @@ public class DisplayBurglary implements DisplayBehavior {
                 System.out.println();
                 sb.save(threatLevel, weapon, ActionRequired,comments);
 
+
+                Gmail sendMessage = new Gmail();
+                sendMessage.runGmailAPI();
+
                 //function to display a message based on the officers' input
                 //{type of alert}: blbala
                 //{another field}: balabl

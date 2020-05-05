@@ -79,6 +79,9 @@ public class DisplayWeatherAlert implements DisplayBehavior {
                 String comments = field1.getText();
                 System.out.println();
                 sb.save(weatherConditions, weatherSeverity, comments);
+
+                Gmail sendMessage = new Gmail();
+                sendMessage.runGmailAPI();
             }
         });
 
